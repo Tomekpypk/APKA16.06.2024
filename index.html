@@ -1,0 +1,1428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Twój trening</title>
+<!--
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+Custom styles for this template
+<link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+-->
+`
+<!-- Custom fonts for this template -->
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+<!-- Custom styles for this template -->
+<!--<link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}" rel="stylesheet">-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.css" rel="stylesheet">
+
+
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Twój panel <sup><!----></sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Trening</span></a><!-- boczny panel przekierowujący do index.html-->
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interfejs
+            </div>
+
+            <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Moje konto</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">konto</h6>
+            <a class="collapse-item" href="{{ url_for('buttons') }}">Dane</a>
+            <a class="collapse-item" href="{{ url_for('cards') }}">Usuń konto</a>
+        </div>
+    </div>    
+</li>
+
+            
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>SOON</span>
+                </a>
+                
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+           
+
+            <!-- Divider-->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <a href="http://athlete-shop.pl" class="btn btn-primary btn-user btn-block">
+                    Nasz sklep
+                </a>
+                <hr>
+            
+                <a href="https://www.facebook.com/AthleteShopKupiecGorzowski" class="btn btn-primary btn-user btn-block">
+                    Facebook
+                </a>
+                <hr>
+            
+                <a href="https://www.instagram.com/athlete_shop_odzywki_gorzow/" class="btn btn-primary btn-user btn-block">
+                    Instagram
+                </a>
+            </div>
+            
+
+            <!-- Sidebar Message 
+            <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+            </div>-->
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search 
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>-->
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts 
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>-->
+                                <!-- Counter - Alerts
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>-->
+                            <!-- Dropdown - Alerts
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li> -->
+
+                        <!-- Nav Item - Messages
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i> -->
+                                <!-- Counter - Messages 
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>-->
+                            <!-- Dropdown - Messages 
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                            problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how
+                                            would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>-->
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+<li class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ username }}</span>
+        
+    </a>
+    <!-- Dropdown - User Information -->
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+        aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="#">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Profil
+        </a>
+        <a class="dropdown-item" href="/login">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Wyloguj
+        </a>
+    </div>
+</li>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/umd.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+-->
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+<div class="container-fluid" id="dynamic-content">
+    <!-- Dynamic content will be loaded here -->
+</div>
+<!-- /.container-fluid -->
+
+                    
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Trening</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Wygeneruj trening</a>
+                    </div><!--tutaj drukowanie strony-->
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                    
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Document</title>
+                        </head>
+                        <body>
+                            <!-- Wyświetlanie zapotrzebowania kalorycznego -->
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div id="zapotrzebowanie_kaloryczne" class="h5 mb-0 font-weight-bold text-gray-800">---</div>
+                                                    <div class="text-xs font-weight-bold text-gray-500 mt-2">
+                                                              Białko: <span id="display_bialko">---</span>g,
+                                                             Tłuszcze: <span id="display_tluszcz">---</span>g,
+                                                                Węglowodany: <span id="display_weglowodany">---</span>g
+                                                    </div>
+
+                                            </div>
+                                            <button onclick="saveToDatabase()" class="btn btn-dark w-100">ZAPISZ</button>
+                                            <div class="col-auto">
+
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-calendar fa-2x text-gray-300"></i> 
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Formularz dla białka -->
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <form onsubmit="handleSubmit(event, 'bialko')">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Białko</div>
+                                                    <input type="text" class="form-control" id="bialko" placeholder="Wpisz ilość białka">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>  
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-3">Dodaj</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Formularz dla tłuszczu -->
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <form onsubmit="handleSubmit(event, 'tluszcz')">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tłuszcze
+                                                    </div>
+                                                    <input type="text" class="form-control" id="tluszcz" placeholder="Wpisz ilość tłuszczu">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-3">Dodaj</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Formularz dla węglowodanów -->
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <form onsubmit="handleSubmit(event, 'weglowodany')">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                        Węglowodany</div>
+                                                    <input type="text" class="form-control" id="weglowodany" placeholder="Wpisz ilość węglowodanów">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-3">Dodaj</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                function handleSubmit(event, nutrient) {
+    event.preventDefault();
+  
+    var input = document.getElementById(nutrient);
+    var value = parseFloat(input.value || 0);
+
+    // Zaaktualizuj wartości wyświetlane na stronie
+    document.getElementById('display_' + nutrient).textContent = value;
+    input.dataset.previousValue = value;  // Zapisz aktualną wartość jako poprzednią
+    
+    // Obliczanie całkowitego zapotrzebowania kalorycznego
+    var bialko = parseFloat(document.getElementById('bialko').value || 0);
+    var tluszcz = parseFloat(document.getElementById('tluszcz').value || 0);
+    var weglowodany = parseFloat(document.getElementById('weglowodany').value || 0);
+  
+    var kcal_bialko = bialko * 4;
+    var kcal_tluszcz = tluszcz * 9;
+    var kcal_weglowodany = weglowodany * 4;
+  
+    var zapotrzebowanie_kaloryczne = kcal_bialko + kcal_tluszcz + kcal_weglowodany;
+    document.getElementById('zapotrzebowanie_kaloryczne').textContent = zapotrzebowanie_kaloryczne;
+
+    // Przesłanie danych do serwera (opcjonalnie)
+    postData('/save', {
+        bialko: bialko,
+        tluszcz: tluszcz,
+        weglowodany: weglowodany,
+        zapotrzebowanie_kaloryczne: zapotrzebowanie_kaloryczne
+    });
+}
+
+function postData(url, data) {
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+function saveToDatabase() {
+    var bialko = parseFloat(document.getElementById('bialko').value || 0);
+    var tluszcz = parseFloat(document.getElementById('tluszcz').value || 0);
+    var weglowodany = parseFloat(document.getElementById('weglowodany').value || 0);
+    var zapotrzebowanie_kaloryczne = parseFloat(document.getElementById('zapotrzebowanie_kaloryczne').textContent || 0);
+
+    postData('/save', {
+        bialko: bialko,
+        tluszcz: tluszcz,
+        weglowodany: weglowodany,
+        zapotrzebowanie_kaloryczne: zapotrzebowanie_kaloryczne
+    });
+}
+
+                              </script>
+
+<!---->  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .select-label {
+            width: 25%;
+            display: inline-block;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .select-wrapper {
+            width: 75%;
+            display: inline-block;
+        }
+
+        /* Poprawiony styl dla tabeli, teraz dopasowuje się do szerokości strony */
+        table {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .card-body {
+            max-width: 100%; /* Ustawiamy maksymalną szerokość dla treści karty */
+        }
+
+        /* Poszerzenie kolumny Ćwiczenie o 1/3 */
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 33.33%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Funkcja dodająca nowy wiersz na ćwiczenie
+        function addCustomExerciseRow(tableId) {
+            var exerciseList = document.getElementById(tableId);
+            var newRow = document.createElement("tr");
+            
+            // Dodawanie osobnych pól wejściowych pod każdym nagłówkiem kolumny
+            newRow.innerHTML = `
+                <td>
+                    <select class="form-control">
+                        <option value="" selected disabled hidden>Wybierz grupę mięśniową</option>
+                        <option value="klatka">Klatka</option>
+                        <option value="barki">Barki</option>
+                        <option value="nogi">Nogi</option>
+                        <option value="biceps">Biceps</option>
+                        <option value="triceps">Triceps</option>
+                        <option value="plecy">Plecy</option>
+                        <option value="pośladki">Pośladki</option>
+                    </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Wpisz nazwę ćwiczenia"></td>
+                <td><input type="text" class="form-control" placeholder="kg"></td>
+                <td><input type="text" class="form-control" placeholder="kg"></td>
+                <td><input type="text" class="form-control" placeholder="kg"></td>
+                <td><input type="text" class="form-control" placeholder="kg"></td>
+                <td><input type="text" class="form-control" placeholder="Reps"></td>
+                <td><input type="text" class="form-control" placeholder="Reps"></td>
+                <td><input type="text" class="form-control" placeholder="Reps"></td>
+                <td><input type="text" class="form-control" placeholder="Reps"></td>
+                <td><button onclick="removeExerciseRow(this)" class="btn btn-danger">Usuń</button></td>
+            `;
+            
+            exerciseList.appendChild(newRow);
+        }
+
+        // Funkcja usuwająca wybrany wiersz
+        function removeExerciseRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        // Funkcja zapisująca ćwiczenie
+        function saveExercise(tableId) {
+            var exerciseList = document.getElementById(tableId);
+            var rows = exerciseList.getElementsByTagName("tr");
+            var exercises = [];
+
+            // Przechodzenie przez każdy wiersz i zapisanie wartości pól
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var cells = row.getElementsByTagName("td");
+                var exercise = {};
+
+                // Zapisanie wartości z pól wejściowych do obiektu exercise
+                exercise.grupa = cells[0].querySelector("select").value;
+                exercise.nazwa = cells[1].querySelector("input").value;
+                exercise.seria1 = cells[2].querySelector("input").value;
+                exercise.seria2 = cells[3].querySelector("input").value;
+                exercise.seria3 = cells[4].querySelector("input").value;
+                exercise.seria4 = cells[5].querySelector("input").value;
+                exercise.powtorzenia1 = cells[6].querySelector("input").value;
+                exercise.powtorzenia2 = cells[7].querySelector("input").value;
+                exercise.powtorzenia3 = cells[8].querySelector("input").value;
+                exercise.powtorzenia4 = cells[9].querySelector("input").value;
+
+                // Dodanie ćwiczenia do listy exercises
+                exercises.push(exercise);
+            }
+
+            // Tutaj możesz wykonać akcję zapisu, np. wysłanie danych na serwer
+
+            // Wypisanie zapisanych ćwiczeń w konsoli (do celów demonstracyjnych)
+            console.log("Zapisane ćwiczenia:", exercises);
+        }
+
+        // Funkcja dodająca nową tabelę treningową
+function addTrainingTable() {
+    var container = document.getElementById("training-container");
+    var newTable = document.createElement("div");
+    newTable.classList.add("col-xl-12", "col-md-12", "mb-4");
+    newTable.innerHTML = `
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th>Wybierz grupę mięśniową</th>                      
+                            <th>Ćwiczenie</th>
+                            <th>Seria 1</th>
+                            <th>Seria 2</th>
+                            <th>Seria 3</th>
+                            <th>Seria 4</th>
+                            <th>Powtórzenia 1</th>
+                            <th>Powtórzenia 2</th>
+                            <th>Powtórzenia 3</th>
+                            <th>Powtórzenia 4</th>
+                            <th>Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exercise-list-${container.childElementCount + 1}">
+                        <!-- Tutaj będą dodawane kolejne wiersze z ćwiczeniami -->
+                    </tbody>
+                </table>
+                <button onclick="addCustomExerciseRow('exercise-list-${container.childElementCount + 1}')" class="btn btn-success mt-3">Dodaj slot</button>
+                <button onclick="saveExercise('exercise-list-${container.childElementCount + 1}')" class="btn btn-primary mt-3">Zapisz</button>
+                <button onclick="addTrainingTable()" class="btn btn-primary mt-3">Dodaj trening</button>
+                <button onclick="removeTrainingTable(this)" class="btn btn-danger mt-3">Usuń trening</button> <!-- Dodanie przycisku usuwającego -->
+            </div>
+        </div>
+    `;
+    container.appendChild(newTable);
+}
+
+// Funkcja usuwająca tabelę treningową
+function removeTrainingTable(button) {
+    var tableToRemove = button.parentNode.parentNode.parentNode;
+    tableToRemove.parentNode.removeChild(tableToRemove);
+}
+    </script>
+
+
+    <!-- Kontener dla tabel treningowych -->
+    <div id="training-container" class="container-fluid">
+        <!-- Pierwsza tabela treningowa -->
+        <div class="col-xl-12 col-md-12 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th>Wybierz grupę mięśniową</th>                      
+                                <th>Ćwiczenie</th>
+                                <th>Seria 1</th>
+                                <th>Seria 2</th>
+                                <th>Seria 3</th>
+                                <th>Seria 4</th>
+                                <th>Powtórzenia </th>
+                                <th>Powtórzenia </th>
+                                <th>Powtórzenia </th>
+                                <th>Powtórzenia </th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exercise-list-1">
+                            <!-- Tutaj będą dodawane kolejne wiersze z ćwiczeniami -->
+                        </tbody>
+                    </table>
+                    <button onclick="addCustomExerciseRow('exercise-list-1')" class="btn btn-success mt-3">Dodaj slot</button>
+                    <button onclick="saveExercise('exercise-list-1')" class="btn btn-primary mt-3">Zapisz</button>
+                    <button onclick="addTrainingTable()" class="btn btn-primary mt-3">Dodaj trening</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+                                <!-- Card Body
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        Pie Chart
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">-->
+                                <!-- Card Header - Dropdown
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- Card Body
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Direct
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Social
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Referral
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Content Row -->
+                    <div class="row">
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                    <!--TYM SIĘ ZAJĄĆ W PIERWSZEJ KOLEJNOŚCI-->
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+                            <!DOCTYPE html>
+                            <html lang="pl">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Postępy w treningu</title>
+                                <style>
+                                    .button-container {
+                                        text-align: right;
+                                    }
+                                    .card {
+                                        margin-bottom: 20px;
+                                        padding: 20px;
+                                    }
+                                    .card-body {
+                                        padding: 10px;
+                                    }
+                                </style>
+                            </head>
+                            <body>
+                            
+                            <!-- Formularz dla postępów w treningu -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Postępy w treningu</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form id="training-progress-form" action="/" method="post">
+                                        <label for="exercise-select">Wybierz ćwiczenie:</label>
+                                        <select id="exercise-select" name="exercise">
+                                            <option value="none">---</option>
+                                            <option value="bench_press">Wyciskanie na ławce płaskiej</option>
+                                            <option value="deadlift">Martwy ciąg</option>
+                                            <option value="row">Wiosłowanie</option>
+                                            <option value="squat">Przysiad</option>
+                                        </select><br><br>
+                                        
+                                        <div id="exercise-forms">
+                                            <!-- Tutaj zostanie wstawiony formularz dla wybranego ćwiczenia -->
+                                        </div>
+                                    </form>
+                                    <h4 class="small font-weight-bold" id="percent-increase"></h4>
+                                </div>
+                            </div>
+                            
+                            <!-- Karty na wyniki -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-primary text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel1">Wyciskanie na ławce płaskiej</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record1">Mój rekord: 0 kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Martwy ciąg -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-success text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel2">Martwy ciąg</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record2">Mój rekord: 0 kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Przysiad -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-info text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel3">Przysiad</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record3">Mój rekord: 0 kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Wiosłowanie -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-warning text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel4">Wiosłowanie</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record4">Mój rekord: 0 kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    document.getElementById('exercise-select').addEventListener('change', function() {
+                                        var selectedExercise = this.value;
+                                        var exerciseForms = document.getElementById('exercise-forms');
+                                        
+                                        // Usuń poprzedni formularz, jeśli istnieje
+                                        while (exerciseForms.firstChild) {
+                                            exerciseForms.removeChild(exerciseForms.firstChild);
+                                        }
+                                        
+                                        // Dodaj nowy formularz dla wybranego ćwiczenia
+                                        var formHTML = '';
+                                        switch(selectedExercise) {
+                                            case 'bench_press':
+                                                formHTML = `
+                                                    <label for="old_PR_bench_press">Stary rekord (kg):</label>
+                                                    <input type="text" id="old_PR_bench_press" name="old_PR_bench_press"><br><br>
+                                                    <label for="new_PR_bench_press">Nowy rekord (kg):</label>
+                                                    <input type="text" id="new_PR_bench_press" name="new_PR_bench_press"><br><br>
+                                                    <div class="button-container">
+                                                        <button type="button" id="calculate-btn" class="btn btn-primary">Oblicz</button>
+                                                        <button type="button" id="save-btn" class="btn btn-primary">Zapisz rekord</button>
+                                                    </div>
+                                                `;
+                                                break;
+                                            case 'deadlift':
+                                                formHTML = `
+                                                    <label for="old_PR_deadlift">Stary rekord (kg):</label>
+                                                    <input type="text" id="old_PR_deadlift" name="old_PR_deadlift"><br><br>
+                                                    <label for="new_PR_deadlift">Nowy rekord (kg):</label>
+                                                    <input type="text" id="new_PR_deadlift" name="new_PR_deadlift"><br><br>
+                                                    <div class="button-container">
+                                                        <button type="button" id="calculate-btn" class="btn btn-primary">Oblicz</button>
+                                                        <button type="button" id="save-btn" class="btn btn-primary">Zapisz rekord</button>
+                                                    </div>
+                                                `;
+                                                break;
+                                            case 'row':
+                                                formHTML = `
+                                                    <label for="old_PR_row">Stary rekord (kg):</label>
+                                                    <input type="text" id="old_PR_row" name="old_PR_row"><br><br>
+                                                    <label for="new_PR_row">Nowy rekord (kg):</label>
+                                                    <input type="text" id="new_PR_row" name="new_PR_row"><br><br>
+                                                    <div class="button-container">
+                                                        <button type="button" id="calculate-btn" class="btn btn-primary">Oblicz</button>
+                                                        <button type="button" id="save-btn" class="btn btn-primary">Zapisz rekord</button>
+                                                    </div>
+                                                `;
+                                                break;
+                                            case 'squat':
+                                                formHTML = `
+                                                    <label for="old_PR_squat">Stary rekord (kg):</label>
+                                                    <input type="text" id="old_PR_squat" name="old_PR_squat"><br><br>
+                                                    <label for="new_PR_squat">Nowy rekord (kg):</label>
+                                                    <input type="text" id="new_PR_squat" name="new_PR_squat"><br><br>
+                                                    <div class="button-container">
+                                                        <button type="button" id="calculate-btn" class="btn btn-primary">Oblicz</button>
+                                                        <button type="button" id="save-btn" class="btn btn-primary">Zapisz rekord</button>
+                                                    </div>
+                                                `;
+                                                break;
+                                            default:
+                                                // Jeśli wybrano niewłaściwe ćwiczenie, pokaż ostrzeżenie
+                                                formHTML = `<p>Wybierz poprawne ćwiczenie</p>`;
+                                        }
+                                        
+                                        // Wstaw nowy formularz do miejsca docelowego
+                                        exerciseForms.innerHTML = formHTML;
+                            
+                                        // Dodaj event listenery do przycisków
+                                        document.getElementById('calculate-btn').addEventListener('click', calculate);
+                                        document.getElementById('save-btn').addEventListener('click', saveRecord);
+                                    });
+                            
+                                    function calculate() {
+                                        var selectedExercise = document.getElementById('exercise-select').value;
+                                        var oldValue = parseFloat(document.getElementById('old_PR_' + selectedExercise).value);
+                                        var newValue = parseFloat(document.getElementById('new_PR_' + selectedExercise).value);
+                                        var percentIncrease = calculatePercentIncrease(oldValue, newValue);
+                                        
+                                        document.getElementById('percent-increase').textContent = 'Twój rekord poprawił się o: ' + percentIncrease.toFixed(2) + '%';
+                                    }
+                            
+                                    function saveRecord() {
+                                        var selectedExercise = document.getElementById('exercise-select').value;
+                                        var newValue = document.getElementById('new_PR_' + selectedExercise).value;
+                            
+                                        switch(selectedExercise) {
+                                            case 'bench_press':
+                                                document.getElementById('record1').textContent = 'Mój rekord: ' + newValue + ' kg';
+                                                break;
+                                            case 'deadlift':
+                                                document.getElementById('record2').textContent = 'Mój rekord: ' + newValue + ' kg';
+                                                break;
+                                            case 'row':
+                                                document.getElementById('record3').textContent = 'Mój rekord: ' + newValue + ' kg';
+                                                break;
+                                            case 'squat':
+                                                document.getElementById('record4').textContent = 'Mój rekord: ' + newValue + ' kg';
+                                                break;
+                                        }
+                                    }
+                            
+                                    function calculatePercentIncrease(oldValue, newValue) {
+                                        if (oldValue != 0) {
+                                            return ((newValue - oldValue) / oldValue) * 100;
+                                        } else {
+                                            return 0;
+                                        }
+                                    }
+                                });
+                            </script>
+                            
+                            </body>
+                            </html>
+                            
+                            
+                            
+                                                        
+                            
+                            
+                             
+                            
+
+
+                            
+                       
+                            <!-- Color System -->
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Ćwiczenia</title>
+                                <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+                            </head>
+                            <body>
+                            
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Wpisz ćwiczenie (1) -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-danger text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel5">Wpisz ćwiczenie</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record5">Mój rekord:</span>
+                                                    <button class="btn btn-sm btn-link text-white" onclick="toggleForm('form5')">Zmień</button>
+                                                </div>
+                                                <div id="form5" style="display: none;">
+                                                    <input type="text" class="form-control" placeholder="Wprowadź nazwę ćwiczenia" id="exerciseInput5">
+                                                    <input type="text" class="form-control mt-2" placeholder="Wprowadź swój rekord" id="result5">
+                                                    <button class="btn btn-sm btn-primary mt-2" onclick="saveRecord('exerciseLabel5', 'record5', 'form5')">Zapisz</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Wpisz ćwiczenie (2) -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-secondary text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel6">Wpisz ćwiczenie</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record6">Mój rekord:</span>
+                                                    <button class="btn btn-sm btn-link text-white" onclick="toggleForm('form6')">Zmień</button>
+                                                </div>
+                                                <div id="form6" style="display: none;">
+                                                    <input type="text" class="form-control" placeholder="Wprowadź nazwę ćwiczenia" id="exerciseInput6">
+                                                    <input type="text" class="form-control mt-2" placeholder="Wprowadź swój rekord" id="result6">
+                                                    <button class="btn btn-sm btn-primary mt-2" onclick="saveRecord('exerciseLabel6', 'record6', 'form6')">Zapisz</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Wpisz ćwiczenie (3) -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-light text-black shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel7">Wpisz ćwiczenie</span>
+                                                <div class="text-black-50 small">
+                                                    <span id="record7">Mój rekord:</span>
+                                                    <button class="btn btn-sm btn-link" onclick="toggleForm('form7')">Zmień</button>
+                                                </div>
+                                                <div id="form7" style="display: none;">
+                                                    <input type="text" class="form-control" placeholder="Wprowadź nazwę ćwiczenia" id="exerciseInput7">
+                                                    <input type="text" class="form-control mt-2" placeholder="Wprowadź swój rekord" id="result7">
+                                                    <button class="btn btn-sm btn-primary mt-2" onclick="saveRecord('exerciseLabel7', 'record7', 'form7')">Zapisz</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Wpisz ćwiczenie (4) -->
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card bg-dark text-white shadow">
+                                            <div class="card-body">
+                                                <span id="exerciseLabel8">Wpisz ćwiczenie</span>
+                                                <div class="text-white-50 small">
+                                                    <span id="record8">Mój rekord:</span>
+                                                    <button class="btn btn-sm btn-link text-white" onclick="toggleForm('form8')">Zmień</button>
+                                                </div>
+                                                <div id="form8" style="display: none;">
+                                                    <input type="text" class="form-control" placeholder="Wprowadź nazwę ćwiczenia" id="exerciseInput8">
+                                                    <input type="text" class="form-control mt-2" placeholder="Wprowadź swój rekord" id="result8">
+                                                    <button class="btn btn-sm btn-primary mt-2" onclick="saveRecord('exerciseLabel8', 'record8', 'form8')">Zapisz</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <script>
+                                function toggleForm(formId) {
+                                    var form = document.getElementById(formId);
+                                    if (form.style.display === "none") {
+                                        form.style.display = "block";
+                                    } else {
+                                        form.style.display = "none";
+                                    }
+                                }
+                            
+                                function saveRecord(exerciseLabelId, recordId, formId) {
+                                    var exercise = document.getElementById(formId).querySelector("input[type='text'][placeholder='Wprowadź nazwę ćwiczenia']").value;
+                                    var result = document.getElementById(formId).querySelector("input[type='text'][placeholder='Wprowadź swój rekord']").value;
+                                    
+                                    // Update the local display without waiting for the response
+                                    var exerciseLabel = document.getElementById(exerciseLabelId);
+                                    exerciseLabel.innerHTML = exercise;
+                                    var record = document.getElementById(recordId);
+                                    record.innerHTML = "Mój rekord: " + result + " KG";
+                                    document.getElementById(formId).style.display = "none";
+                                    
+                                    // Send the data to the server
+                                    fetch('/update_record', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            exerciseId: formId.replace('form', ''),  // Assumes ID is part of the formId
+                                            exerciseName: exercise,
+                                            newRecord: result
+                                        })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => console.log('Success:', data))
+                                    .catch((error) => console.error('Error:', error));
+                                }
+                            </script>
+                            
+                            <div class="col-lg-6 mb-4">
+
+                                <!-- tWOJE WYMIARY -->
+                                
+                                    </div>
+                                </div>
+                            </body>
+                            </html>
+                            
+                            
+                            
+
+                        <div class="col-lg-6 mb-4">
+
+                            <div class="container">
+                                <!-- Twoje wymiary -->
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Twoje wymiary</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                                src="https://dinoanimals.pl/wp-content/uploads/2018/01/Czlowiek-rozumny-Homo-sapiens-21-670x670.jpg" alt="...">
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <!-- Formularz dla obwodu barków -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód barków</h6>
+                                                            <span id="barkiLabel">Obwód barków:</span>
+                                                        </div>
+                                                        <div id="formBarki" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód barków" id="barkiInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('barki')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formBarki')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Formularz dla obwodu klatki -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód klatki</h6>
+                                                            <span id="klatkaLabel">Obwód klatki:</span>
+                                                        </div>
+                                                        <div id="formKlatka" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód klatki" id="klatkaInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('klatka')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formKlatka')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Formularz dla obwodu pasa -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód pasa</h6>
+                                                            <span id="pasaLabel">Obwód pasa:</span>
+                                                        </div>
+                                                        <div id="formPasa" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód pasa" id="pasaInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('pasa')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formPasa')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Formularz dla obwodu bicepsa -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód bicepsa</h6>
+                                                            <span id="bicepsLabel">Obwód bicepsa:</span>
+                                                        </div>
+                                                        <div id="formBiceps" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód bicepsa" id="bicepsInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('biceps')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formBiceps')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Formularz dla obwodu bioder -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód bioder</h6>
+                                                            <span id="biodraLabel">Obwód bioder:</span>
+                                                        </div>
+                                                        <div id="formBiodra" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód bioder" id="biodraInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('biodra')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formBiodra')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Formularz dla obwodu uda -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód uda</h6>
+                                                            <span id="udaLabel">Obwód uda:</span>
+                                                        </div>
+                                                        <div id="formUda" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód uda" id="udaInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('uda')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formUda')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Formularz dla obwodu łydki -->
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Obwód łydki</h6>
+                                                            <span id="lydkiLabel">Obwód łydki:</span>
+                                                        </div>
+                                                        <div id="formLydki" style="display: none;">
+                                                            <input type="text" class="form-control mt-3" placeholder="Wprowadź obwód łydki" id="lydkiInput">
+                                                            <button class="btn btn-sm btn-primary mt-2" onclick="saveDimension('lydki')">Zapisz</button>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-link text-primary" onclick="toggleForm('formLydki')">Zmień</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        // Funkcja do przełączania widoczności formularza
+                                        function toggleForm(formId) {
+                                            var form = document.getElementById(formId);
+                                            if (form.style.display === "none") {
+                                                form.style.display = "block";
+                                            } else {
+                                                form.style.display = "none";
+                                            }
+                                        }
+                                    
+                                        // Funkcja do zapisywania wymiarów
+                                        function saveDimension(dimensionType) {
+                                            var inputId = dimensionType + "Input";
+                                            var labelId = dimensionType + "Label";
+                                            var dimensionValue = document.getElementById(inputId).value;
+                                    
+                                            // Aktualizacja lokalnego wyświetlania bez czekania na odpowiedź
+                                            var label = document.getElementById(labelId);
+                                            label.innerText = dimensionValue + " cm"; // Aktualizacja etykiety wartością
+                                            document.getElementById(inputId).value = ""; // Wyczyszczenie pola wprowadzania
+                                            var formId = "form" + dimensionType;
+                                            var form = document.getElementById(formId);
+                                            form.style.display = "none"; // Ukrycie formularza po zapisaniu wartości
+                                    
+                                            // Wysyłanie danych do serwera
+                                            fetch('/update_dimension', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                },
+                                                body: JSON.stringify({
+                                                    dimensionType: dimensionType,
+                                                    dimensionValue: dimensionValue
+                                                })
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => console.log('Success:', data))
+                                            .catch((error) => console.error('Error:', error));
+                                        }
+                                    </script>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            fetch('/get_initial_data')
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                console.log(data); // Logowanie danych do konsoli dla sprawdzenia
+                                                // Używanie danych do wypełnienia formularzy
+                                                if (data.measurements) {
+                                                    document.getElementById('barkiInput').value = data.measurements.shoulders || '';
+                                                    document.getElementById('klatkaInput').value = data.measurements.chest || '';
+                                                    document.getElementById('pasaInput').value = data.measurements.waist || '';
+                                                    document.getElementById('bicepsInput').value = data.measurements.biceps || '';
+                                                    document.getElementById('biodraInput').value = data.measurements.hips || '';
+                                                    document.getElementById('udaInput').value = data.measurements.thighs || '';
+                                                    document.getElementById('lydkiInput').value = data.measurements.calves || '';
+                                                }
+                                            })
+                                            .catch(error => console.error('Error loading initial data:', error));
+                                        });
+                                    </script>
+                                    
+                                    
+     
+                                    
+                            </div>
+
+                            <!-- Approach -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Sentencja od Tomka na dziś</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Działa</p>
+                                    <p class="mb-0">DZIAŁA.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            
+
+        </div>
+        <!-- End of Content Wrapper -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Tomekpk 2024</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Gotowy do wyjścia?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Wybierz wyloguj jeśli się znudziłeś</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+
+</body>
+
+</html>
