@@ -1,11 +1,18 @@
 import datetime
 from flask import render_template, request, jsonify, redirect, url_for, flash, abort, session, current_app as app
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from blog import app, db
 from .models import User, TrainingProgress, BodyMeasurements, CaloricDemand, ExerciseRecord
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_required, current_user
 
+# Inicjalizacja LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'  # nazwa widoku logowania
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 # Inicjalizacja poprzednich wartości
 previous_values = {
@@ -94,7 +101,7 @@ def index():
             return jsonify({'error': str(e)}), 400
 
     # Jeśli metoda to GET, zwróć stronę z formularzem
-    return render_template("index.html")
+    return render_template("index.html", username=current_user.username)
 
 def calculate_percent_increase(old_value, new_value):
     if old_value != 0:
@@ -121,8 +128,6 @@ def update_record():
     db.session.commit()
 
     return jsonify({"status": "success", "message": "Record updated successfully"})
-
-
 
 @app.route('/update_dimension', methods=['POST'])
 @login_required
@@ -162,12 +167,10 @@ def update_dimension():
     except Exception as e:
         abort(500, description=f"An error occurred: {e}")
 
-
-
 @app.route('/get_initial_data', methods=['GET'])
 @login_required
 def get_initial_data():
-    user_id = 1
+    user_id = current_user.id  # Pobieranie ID aktualnie zalogowanego użytkownika
     measurements = BodyMeasurements.query.filter_by(user_id=user_id).order_by(BodyMeasurements.measurement_date.desc()).first()
     training_progress = TrainingProgress.query.filter_by(user_id=user_id).all()
 
@@ -199,28 +202,6 @@ def get_initial_data():
     })
 
 
-
-"""@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        first_name = request.form['exampleFirstName']
-        last_name = request.form['exampleLastName']
-        email = request.form['exampleInputEmail']
-        password = request.form['exampleInputPassword']
-        repeat_password = request.form['exampleRepeatPassword']
-
-        if password != repeat_password:
-            flash('Passwords do not match!', 'danger')
-            return redirect(url_for('register'))
-
-        hashed_password = generate_password_hash(password)
-        new_user = User(first_name=first_name, last_name=last_name, email=email, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-        flash('You have successfully registered!', 'success')
-        return redirect(url_for('login'))
-    return render_template('register.html')"""
-
 ADMIN_EMAIL = "propsek@gmail.com"
 ADMIN_PASSWORD = "tomek1"
 
@@ -234,27 +215,26 @@ def login():
         if email == ADMIN_EMAIL and password == ADMIN_PASSWORD:
             session['user_id'] = 1  # Załóżmy, że admin ma ID 1
             session['username'] = 'Admin'  # Nazwa dla admina
+            login_user(User.query.get(1), remember=remember)
             flash('Welcome back, Admin!', 'success')
-            return render_template('index.html', username='Admin')
+            return redirect(url_for('index'))
 
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password_hash, password):
             session['user_id'] = user.id
             session['username'] = user.username  # Zapisz nazwę użytkownika w sesji
+            login_user(user, remember=remember)
             flash('Welcome back!', 'success')
-            return render_template('index.html', username=user.username)
+            return redirect(url_for('index'))
         else:
             flash('Invalid email or password!', 'danger')
     return render_template('login.html')
 
-
-#new_user = User(username='TOMEKPK', email='propsek@gmail.com', password_hash=generate_password_hash('ghfew33nen4iR%'))
-
 @app.route('/logout')
 def logout():
+    logout_user()
     session.clear()  # Usuwa wszystkie dane z sesji
     return redirect(url_for('login'))
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -288,38 +268,13 @@ def forgot_password():
             flash('Email not found!', 'danger')
     return render_template('forgot-password.html')
 
-
-
-"""from flask import render_template, redirect, url_for, request
-from flask_login import login_user, logout_user, login_required, current_user
-from .models import User, db  # Importuj swój model User
-from werkzeug.security import check_password_hash
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password_hash, password):
-            login_user(user)
-            return redirect(url_for('index'))
-        else:
-            return 'Invalid username or password'
-    return render_template('login.html')
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-"""
-
 @app.route('/buttons')
+@login_required
 def buttons():
     return render_template('buttons.html')
 
 @app.route('/cards')
+@login_required
 def cards():
     return render_template('cards.html')
 
